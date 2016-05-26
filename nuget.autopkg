@@ -1,7 +1,7 @@
 nuget {
 	nuspec {
 		id = BASS;
-		version : 2.4.12;
+		version : 2.4.12.1;
 		title: BASS;
 		authors: {Un4seen Developments Ltd};
 		owners: {Erik Faye-Lund};

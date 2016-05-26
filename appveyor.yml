@@ -12,8 +12,8 @@ build_script:
   - ps: Write-NuGetPackage nuget.autopkg
 
 artifacts:
-  - path: BASS.2.4.12.nupkg
-  - path: BASS.redist.2.4.12.nupkg
+  - path: BASS.2.4.12.1.nupkg
+  - path: BASS.redist.2.4.12.1.nupkg
 
 deploy:
   provider: NuGet
