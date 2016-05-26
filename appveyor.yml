@@ -8,7 +8,7 @@ install:
 
 build_script:
   - curl -fsS -o bass24.zip http://www.un4seen.com/files/bass24.zip
-  - 7z x -obass24 bass24.zip > NUL
+  - 7z x -obass24 bass24.zip
   - ps: Write-NuGetPackage nuget.autopkg
 
 artifacts:
