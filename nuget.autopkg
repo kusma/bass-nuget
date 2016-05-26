@@ -1,0 +1,35 @@
+nuget {
+	nuspec {
+		id = BASS;
+		version : 2.4.12;
+		title: BASS;
+		authors: {Un4seen Developments Ltd};
+		owners: {Erik Faye-Lund};
+		licenseUrl: "http://www.un4seen.com/bass.html#license";
+		projectUrl: "http://www.un4seen.com/bass.html";
+		iconUrl: "http://www.un4seen.com/_/logo_bass.gif";
+		requireLicenseAcceptance:false;
+		summary: @"BASS is an audio library for use in software on several platforms.";
+
+		description: @"BASS is an audio library for use in software on several platforms. Its purpose is to provide the powerful and efficient sample, stream, MOD music, and recording functions. All in a compact DLL that won't overly bloat your software.";
+		releaseNotes: "Release 2.4.12 of BASS";
+		copyright: "Copyright (c) 1999-2016 Un4seen Developments Ltd. All rights reserved.";
+		tags: { BASS, MP3, OGG, XM, MOD, S3M, native };
+	}
+
+	files {
+		include: { "bass24\c\bass.h" };
+
+		docs: { "bass24\bass.chm" };
+
+		[Win32] {
+			lib: bass24\c\bass.lib;
+			bin: bass24\bass.dll;
+		}
+
+		[x64] {
+			lib: bass24\c\x64\bass.lib;
+			bin: bass24\x64\bass.dll;
+		}
+	}
+}

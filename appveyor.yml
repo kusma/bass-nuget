@@ -1,0 +1,25 @@
+version: 2.4.12+{build}
+
+install:
+  - ps: (New-Object Net.WebClient).DownloadFile('http://coapp.org/files/CoApp.Tools.Powershell.msi', "$($env:USERPROFILE)\CoApp.Tools.Powershell.msi")
+  - ps: Start-Process -FilePath msiexec -ArgumentList /i, "$($env:USERPROFILE)\CoApp.Tools.Powershell.msi", /quiet -Wait
+  - ps: $env:PSModulePath = $env:PSModulePath + ';C:\Program Files (x86)\Outercurve Foundation\Modules'
+  - ps: Import-Module CoApp
+
+build_script:
+  - if not exist bass24.zip curl -fsS -o bass24.zip http://www.un4seen.com/files/bass24.zip
+  - 7z x -obass24 bass24.zip > NUL
+  - ps: Write-NuGetPackage nuget.autopkg
+
+artifacts:
+  - path: BASS.2.4.12.nupkg
+  - path: BASS.redist.2.4.12.nupkg
+
+deploy:
+  provider: NuGet
+  api_key:
+    secure: obtq4QGczTJPIOisH5WZyhnr6uB68ql82o3jJCryvNXUVQhMFX3hr5LOjodSRCWm
+  skip_symbols: true
+  artifact: /.*\.nupkg/
+  on:
+    appveyor_repo_tag: true
